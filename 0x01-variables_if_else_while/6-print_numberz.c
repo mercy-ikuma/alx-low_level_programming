@@ -2,15 +2,18 @@
 
 /**
  *main - Entry point
- *Return: Always 0 (success)
+ *Return; Always (0) Success
  */
 
 int main(void)
 {
-char c;
+int n = 48;
 
-for (c = 'a'; c <= 'z'; c++)
-putchar(c);
+while (n <= 57)
+{
+putchar(n);
+n++;
+}
 putchar('\n');
 
 return (0);
