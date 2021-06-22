@@ -1,50 +1,29 @@
-#include "holberton.h"
+#include <stdio.h>
+#include <holberton.h>
 
 /**
- * print_times_table - print multiplication table up to n
- * @n: integer argument
- */
-
-void print_times_table(int n)
+* print_to_98 - prints all natural numbers
+* from n to 98, followed by a new line
+*
+* @n: input number.
+*
+* Return: no return.
+*/
+void print_to_98(int n)
 {
-	int row;
-	int column;
-	int product;
-
-	if (n >= 0 && n <= 15)
+	if (n > 98)
 	{
-		for (row = 0; row <= n; row++)
+	for (; n > 98; n--)
 		{
-			for (column = 0; column <= n; column++)
-			{
-				product = (row * column);
-				if (column == 0)
-					_putchar('0' + product);
-				else
-				{
-					_putchar(',');
-					_putchar(' ');
-					if (product <= 9)
-					{
-						_putchar(' ');
-						_putchar(' ');
-						_putchar('0' + product);
-					}
-					else if (product > 9 && product < 100)
-					{
-						_putchar(' ');
-						_putchar('0' + (product / 10));
-						_putchar('0' + (product % 10));
-					}
-					else if (product >= 100)
-					{
-						_putchar('0' + (product / 100));
-						_putchar('0' + ((product / 10) - 10));
-						_putchar('0' + (product % 10));
-					}
-				}
-			}
-			_putchar('\n');
+		printf("%d, ", n);
 		}
 	}
+	else if (n < 98)
+	{
+		for (; n < 98; n++)
+		{
+		printf("%d, ", n);
+		}
+	}
+	printf("%d\n", n);
 }
