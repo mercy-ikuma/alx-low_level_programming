@@ -31,6 +31,10 @@ int _isdigit(int c);
  * Return: product of a and b
  */
 
+int largest_number(int a, int b, int c);
+int convert_day(int month, int day);
+void print_remaining_days(int month, int day, int year);
+
 int mul(int a, int b);
 
 /**
