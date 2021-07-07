@@ -1,63 +1,38 @@
 #include "holberton.h"
-
 /**
- * increment_root - increment potential root by one to retest if square root
- * @n: number to find square root of
- * @root: test this root
- * Return: natural square root, or -1 if not natural root
- */
-
-int increment_root(int n, int root)
+ * sqtRecursive - computes square root recursively doing binary search
+ * @start: inital number
+ * @end: last number within the limit of number
+ * @m: given number
+ * Return: 1 if not found sqrroot, else sqrroot
+ **/
+int sqtRecursive(int start, int end, int m)
 {
-	int product = root * root;
+	long mid;
 
-	if (product < n)
-		return (increment_root(n, root - 1));
-	else if (product == n)
-		return (root);
-	else
-		return (-1);
+	if (end >= start)
+	{
+		mid = start + (end - start) / 2;
+		if (mid * mid == m)
+			return (mid);
+/* following binary search */
+		if (mid * mid > m)
+			return (sqtRecursive(start, mid - 1, m));
+		if (mid * mid < m)
+			return (sqtRecursive(mid + 1, end, m));
+	}
+	return (-1);
 }
-
 /**
- * decrement_root - decrement potential root by one to retest if square root
- * @n: number to find square root of
- * @root: test this root
- * Return: natural square root, or -1 if not natural root
- */
-
-int decrement_root(int n, int root)
+ * _sqrt_recursion - finds the natural square root of a number
+ * @n: given number
+ * Return: square root of n or -1
+ **/
+	int _sqrt_recursion(int n)
 {
-	int product = root * root;
-
-	if (product > n)
-		return (decrement_root(n, root - 1));
-	else if (product == n)
-		return (root);
-	else
-		return (-1);
-}
-
-/**
- * _sqrt_recursion - find natural square root of n
- * @n: n
- * Return: natural square root, or -1 if not natural root
- */
-
-int _sqrt_recursion(int n)
-{
-	int root = n / 2;
-	int product = root * root;
-
 	if (n < 0)
 		return (-1);
-
-	if (product < n)
-		return (increment_root(n, root + 1));
-	else if (product > n)
-		return (decrement_root(n, root - 1));
-	else if (product == n)
-		return (root);
-
-	return (0);
+	if (n == 0 || n == 1)
+		return (n);
+	return (sqtRecursive(2, n, n));
 }
