@@ -1,42 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "holberton.h"
-
 /**
- * main - prints the minimum number of coins to make change for an amount of money
- * @argc: should count two arguments
- * @argv: arguments given should be program name and amount of money
- * Return: least number of coins, 0 if negative money amount, 1 if two arguments not given
- */
-
+ * main - prints the minimum number of coins to make change for a given amount
+ * @argc: arguement count
+ * @argv: array of pointers to arguement strings
+ * Return: number of coins or 1
+ **/
 int main(int argc, char *argv[])
 {
-	int n, coins = 0;
+	int amount, coins;
 
-	/* validate input */
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-
-	/* convert string to int and calculate coins */
-	n = atoi(argv[1]);
-
-	if (argv[1][0] == '-' || n ==0)
+	amount = atoi(argv[1]);
+	coins = 0;
+	if (amount > 25)
 	{
-		printf("0\n");
-		return (0);
+		while (amount >= 25)
+			amount -= 25, coins++;
 	}
-
-	coins += n / 25;
-	n = n % 25;
-	coins += n / 10;
-	n = n % 10;
-	coins += n / 5;
-	n = n % 5;
-	coins += n / 1;
-
+	if (amount > 10 && amount < 25)
+	{
+		while (amount >= 10)
+			amount -= 10, coins++;
+	}
+	if (amount > 5 && amount < 10)
+	{
+		while (amount >= 5)
+			amount -= 5, coins++;
+	}
+	if (amount > 2 && amount < 5)
+	{
+		while (amount >= 2)
+			amount -= 2, coins++;
+	}
+	if (amount == 1 || amount == 2 || amount == 5 || amount == 10 || amount == 25)
+	{
+		coins++;
+	}
 	printf("%d\n", coins);
 	return (0);
 }
